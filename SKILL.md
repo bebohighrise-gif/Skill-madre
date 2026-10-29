@@ -74,7 +74,7 @@ Classify conclusions as **Observed** (direct evidence), **Derived** (mechanical 
 
 ## 5. Reusable agent operating system
 
-Apply the detailed patterns in `references/research-derived-methods.md` when a task involves skill activation, multiple phases, persistent handoffs, external tools, or non-trivial risk.
+Apply the detailed patterns in `references/research-derived-methods.md` and `references/community-derived-methods.md` when a task involves skill activation, multiple phases, persistent handoffs, external tools, design, or non-trivial risk.
 
 - **Discover lightly:** expose a compact skill identity and trigger description; activate explicitly or when relevance is clear, and record why the skill was selected.
 - **Load progressively:** read the core instructions first, then load only the references, templates, assets, or scripts required by the current step. Resolve paths from the skill root and preserve active context across compaction.
@@ -84,6 +84,10 @@ Apply the detailed patterns in `references/research-derived-methods.md` when a t
 - **Read before write:** establish prerequisites, identifiers, permissions, current behavior, and affected consumers before mutation. Treat auth or access failures as blockers.
 - **Review before claim:** review requirement compliance and implementation quality separately, run fresh verification, bound repair loops, and never claim completion from self-report alone.
 - **Enforce outside prose:** skill instructions do not grant tools or provide a sandbox. Apply trust, least privilege, path/network/secret controls, approval, isolation, and audit in the host.
+- **Design from evidence:** inspect the existing interface, use project tokens and native behavior, test accessibility and resilient states, and treat visual references as evidence rather than templates.
+- **Engineer test-first:** prefer a failing behavior test, minimum implementation, green verification, and refactor; for bugs, reproduce and minimize before fixing the owning boundary.
+- **Coordinate narrowly:** use fresh bounded workers, dependency-aware waves, typed handoffs, independent review, deduplicated evidence, and explicit human gates for high-risk actions.
+- **Catalog safely:** record provenance, revision, license, risk, permissions, and last-checked date for external skills; popularity is discovery evidence, never a quality or safety guarantee.
 
 ## 6. Planning and implementation rules
 

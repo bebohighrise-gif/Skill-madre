@@ -13,7 +13,7 @@ required = [
     "install.sh", "install.ps1", "installer/SKILL.md",
     "references/platform-adapters.md", "references/platform-playbooks.md",
     "references/portable-installation.md", "references/quality-matrix.md",
-    "references/research-derived-methods.md",
+    "references/research-derived-methods.md", "references/community-derived-methods.md",
     "evals/evals.json", "scripts/package_skill.py", "scripts/install_skill.py",
 ]
 missing = [p for p in required if not (ROOT / p).is_file()]

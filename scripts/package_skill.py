@@ -18,6 +18,7 @@ INCLUDE = [
     "references/portable-installation.md",
     "references/quality-matrix.md",
     "references/research-derived-methods.md",
+    "references/community-derived-methods.md",
     "installer/SKILL.md",
 ]
 

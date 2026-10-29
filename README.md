@@ -56,7 +56,7 @@ python3 scripts/validate_project.py
 python3 scripts/package_skill.py --output /tmp/madre.skill
 ```
 
-Consulta también [references/platform-playbooks.md](references/platform-playbooks.md), [references/quality-matrix.md](references/quality-matrix.md), [references/portable-installation.md](references/portable-installation.md), [references/research-derived-methods.md](references/research-derived-methods.md) y [evidence-ledger.md](evidence-ledger.md). La referencia de investigación integra métodos públicos como activación progresiva, planificación por fases, handoffs durables, revisión independiente, evaluación por casos y límites de seguridad; no copia código, prompts, texto propietario ni branding.
+Consulta también [references/platform-playbooks.md](references/platform-playbooks.md), [references/quality-matrix.md](references/quality-matrix.md), [references/portable-installation.md](references/portable-installation.md), [references/research-derived-methods.md](references/research-derived-methods.md), [references/community-derived-methods.md](references/community-derived-methods.md) y [evidence-ledger.md](evidence-ledger.md). Las referencias integran métodos públicos como activación progresiva, TDD, diseño UI basado en evidencia, planes ejecutables, subagentes acotados, revisión independiente, catálogos con procedencia, automatización declarativa y límites de seguridad; no copian código, prompts, texto propietario ni branding.
 
 ## Licencia
 

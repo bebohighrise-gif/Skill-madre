@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.0 — Community-derived methods
+
+- Added neutral methods from highly visible community repositories for UI/UX review, strict TDD, executable planning, root-cause debugging, bounded subagents, durable state, skill catalogs, declarative automation, and security boundaries.
+- Added provenance, license, risk, revision, and last-checked guidance for external skills.
+- Added explicit rules that stars, forks, badges, and catalog inclusion are discovery signals only.
+- Preserved the no-provider, no-branding, no-copied-content policy.
+
 ## 0.4.0 — Research-derived operating methods
 
 - Added a neutral synthesis of public skill and agent-workflow methods.

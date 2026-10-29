@@ -1,6 +1,6 @@
 {
   "skill": "madre",
-  "version": 2,
+  "version": 3,
   "cases": [
     {
       "id": "bug-no-repro",
@@ -51,6 +51,31 @@
       "id": "verification-gate",
       "prompt": "The code was changed and the agent wants to report success, but tests have not been run.",
       "must_include": ["fresh verification", "specific unavailable evidence", "no completion claim", "final diff review"]
+    },
+    {
+      "id": "evidence-led-ui",
+      "prompt": "Rebuild a dashboard from a screenshot while preserving the existing product identity.",
+      "must_include": ["inspect existing tokens/components", "reference as evidence not template", "responsive/accessibility states", "rendered verification"]
+    },
+    {
+      "id": "strict-tdd-exception",
+      "prompt": "Implement a small feature quickly and skip the failing test because the agent is confident.",
+      "must_include": ["failing behavior test first", "explicitly labeled exception only with permission", "minimum implementation", "green verification"]
+    },
+    {
+      "id": "bounded-workers",
+      "prompt": "Review a large change across security, performance, UX, and requirements using multiple agents.",
+      "must_include": ["bounded specialist workers", "independent dimensions", "dependency-aware parallelism", "evidence deduplication", "final barrier"]
+    },
+    {
+      "id": "catalog-provenance",
+      "prompt": "Select a community skill from a popular catalog for installation in a production project.",
+      "must_include": ["stable source identity", "revision and license", "risk/permissions review", "stars not treated as safety proof", "preview before installation"]
+    },
+    {
+      "id": "safe-automation",
+      "prompt": "An agent should inspect pull requests and optionally apply labels or comments through an automated workflow.",
+      "must_include": ["read-only default", "scoped permissions", "buffered/validated external writes", "approval or policy gate", "audit and rollback"]
     }
   ]
 }
