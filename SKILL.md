@@ -72,7 +72,20 @@ Question | Evidence | Conclusion | Confidence | Remaining unknown | Next check
 
 Classify conclusions as **Observed** (direct evidence), **Derived** (mechanical consequence), **Inferred** (reasoned hypothesis), or **Unknown** (not established). Preserve incomplete coverage and search boundaries.
 
-## 5. Planning and implementation rules
+## 5. Reusable agent operating system
+
+Apply the detailed patterns in `references/research-derived-methods.md` when a task involves skill activation, multiple phases, persistent handoffs, external tools, or non-trivial risk.
+
+- **Discover lightly:** expose a compact skill identity and trigger description; activate explicitly or when relevance is clear, and record why the skill was selected.
+- **Load progressively:** read the core instructions first, then load only the references, templates, assets, or scripts required by the current step. Resolve paths from the skill root and preserve active context across compaction.
+- **Route by risk:** use the smallest safe process for the task. Add clarification, planning, approval, review, and stronger evidence as ambiguity, blast radius, external visibility, or irreversibility increases.
+- **Persist handoffs:** record the active work item, assumptions, decisions, plan, task state, changed files, commands, evidence, findings, and next action. Do not depend on hidden chat history.
+- **Separate roles:** keep orchestration, backlog selection, retries, and completion decisions distinct from bounded worker execution. Do not run conflicting edits in parallel.
+- **Read before write:** establish prerequisites, identifiers, permissions, current behavior, and affected consumers before mutation. Treat auth or access failures as blockers.
+- **Review before claim:** review requirement compliance and implementation quality separately, run fresh verification, bound repair loops, and never claim completion from self-report alone.
+- **Enforce outside prose:** skill instructions do not grant tools or provide a sandbox. Apply trust, least privilege, path/network/secret controls, approval, isolation, and audit in the host.
+
+## 6. Planning and implementation rules
 
 Before coding, identify the owning module, data flow, state transitions, contracts, dependencies, migration risk, platform differences, and test seam. Prefer fixing the producing boundary over adding downstream patches. Reuse existing utilities and patterns. Introduce an abstraction only when it removes observed complexity.
 
@@ -82,7 +95,7 @@ When a requirement conflicts with existing behavior, preserve compatibility by d
 
 When adding a dependency, verify whether the project already provides the capability, then check license, maintenance, version compatibility, supply-chain risk, bundle impact, and reproducible installation. Never silently upgrade unrelated dependencies.
 
-## 6. Tool and environment discipline
+## 7. Tool and environment discipline
 
 Use the least powerful tool that can answer the question. Batch independent read-only inspections; keep writes and destructive actions sequential. Use bounded output and progressive disclosure for large files, logs, graphs, and search results.
 
@@ -94,7 +107,7 @@ Reuse healthy services, caches, analysis sessions, evidence, and test fixtures. 
 
 For web research, search broad enough to find primary sources, open the source page, check version/date/context, cite the claim, and state when no reliable source was found. Never treat snippets, generated content, or a filename as authoritative proof.
 
-## 7. Human interaction and authorization
+## 8. Human interaction and authorization
 
 Ask a focused question when a missing product choice could change architecture, when the target or repository is unclear, when authority is missing, when a secret is needed, or when an action is destructive, financial, legal, medical, public, production-impacting, or difficult to reverse.
 
@@ -102,7 +115,7 @@ Do not ask for confirmation for routine, reversible, low-risk inspection or edit
 
 Explain blockers with the exact reason, what was verified, what remains unknown, and the smallest safe option. Never silently switch repositories, devices, environments, providers, frameworks, or delivery formats.
 
-## 8. Bug, error, and recovery protocol
+## 9. Bug, error, and recovery protocol
 
 For a defect, record input, environment, expected result, actual result, logs, stack trace, timing, frequency, and whether reproduction is deterministic. Minimize the failing case. Trace the value, event, resource, or permission from producer to consumer. Fix the owning boundary and add a regression test before closing the issue.
 
@@ -110,13 +123,13 @@ Classify the failure as environment, dependency/toolchain, input/contract, logic
 
 After a fix, recheck error handling, cancellation, retries, permissions, adjacent consumers, migrations, cleanup, and rollback. A successful command does not close a bug if the user-visible behavior is unverified.
 
-## 9. TDD and validation strategy
+## 10. TDD and validation strategy
 
 When behavior is testable, write or identify the smallest failing test or characterization test, implement the narrow fix, run it, and refactor only after it passes. Use unit tests for pure logic, integration tests for boundaries, end-to-end tests for critical journeys, property/fuzz tests for parsers and untrusted input, and contract tests for APIs and plugins.
 
 Cover relevant success, empty, malformed, timeout, offline, retry, cancellation, permission-denied, duplicate, race, lifecycle, migration, and rollback paths. Prefer deterministic clocks, fixtures, and network fakes. Do not label a simulated provider or mock as proof of a real provider.
 
-## 10. Seven mandatory quality controls
+## 11. Seven mandatory quality controls
 
 Apply all seven controls and record their evidence:
 
@@ -130,7 +143,7 @@ Apply all seven controls and record their evidence:
 
 An unavailable control is **unavailable**, not passed. Do not claim zero regressions without evidence.
 
-## 11. Platform and visual lanes
+## 12. Platform and visual lanes
 
 Use only lanes relevant to the task and report which ones were actually validated.
 
@@ -144,7 +157,7 @@ Use the platform playbook in `references/platform-playbooks.md` for implementati
 
 **3D/4K/animation:** define target device, frame-rate budget, color space, aspect ratio, codec/container, texture limits, lighting, camera, LOD, mesh density, draw calls, memory, and export settings. Preserve source assets separately from delivery assets. Check UVs, normals, scale, pivots, rig constraints, collision, timing, easing, interruption, and reduced-motion fallback. Do not upscale and call it native 4K.
 
-## 12. Authorized reverse engineering
+## 13. Authorized reverse engineering
 
 Use this lane only for an authorized shipped artifact, package, runtime behavior, protocol, or behavior not established by source. Skip it for ordinary source-repository architecture analysis.
 
@@ -158,13 +171,13 @@ Use this lane only for an authorized shipped artifact, package, runtime behavior
 
 Never bypass authentication, licensing, access controls, anti-tamper protections, or vendor restrictions. Never use cracked tools or stolen keys. Respect law, license, terms, privacy, third-party notices, and target-owner authority. Stop when authority or scope is unresolved.
 
-## 13. UX/UI and product behavior
+## 14. UX/UI and product behavior
 
 Design behavior before decoration. Model each important flow as states and transitions. Every interactive control needs an accessible name, visible idle/hover/focus/pressed/disabled/loading/success/error state, feedback, and recovery. Treat copy, timing, haptics, sound, motion, empty states, permissions, and offline behavior as part of the product contract.
 
 Use purposeful micro-animation to communicate cause and effect. Keep transitions short, interruptible, state-driven, and performant. Provide reduced-motion and low-power fallbacks. Do not hide errors, block primary tasks, or add visual effects that imply behavior the system does not actually perform.
 
-## 14. Release and handoff
+## 15. Release and handoff
 
 Before delivery, inspect the final diff and status. Remove dead code, debug output, temporary files, generated caches, credentials, and unrelated changes. Verify documented install/build/test commands from a clean or isolated checkout when feasible. Record exact commands and results.
 

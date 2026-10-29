@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.0 — Research-derived operating methods
+
+- Added a neutral synthesis of public skill and agent-workflow methods.
+- Integrated metadata-first activation, progressive disclosure, durable handoffs, risk-based routing, read-before-write execution, independent review, evidence gates, and host-enforced security boundaries.
+- Added activation, resource-loading, planning, untrusted-installation, and completion-evidence evaluation cases.
+- Recorded provenance and license boundaries without copying source code, prompts, documentation prose, templates, or branding.
+
 ## 0.3.0 — Neutral portable installer
 
 - Removed provider-specific names, paths, metadata, and adapters.

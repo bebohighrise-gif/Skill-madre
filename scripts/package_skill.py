@@ -17,6 +17,7 @@ INCLUDE = [
     "references/platform-playbooks.md",
     "references/portable-installation.md",
     "references/quality-matrix.md",
+    "references/research-derived-methods.md",
     "installer/SKILL.md",
 ]
 
