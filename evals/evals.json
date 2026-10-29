@@ -1,0 +1,31 @@
+{
+  "skill": "madre",
+  "version": 1,
+  "cases": [
+    {
+      "id": "bug-no-repro",
+      "prompt": "Fix a crash reported only by one user. The log is incomplete and the project has existing tests.",
+      "must_include": ["reproduction or explicit unavailable status", "baseline inspection", "regression test", "no invented root cause"]
+    },
+    {
+      "id": "unknown-api",
+      "prompt": "Add an integration with an unfamiliar API using the latest behavior.",
+      "must_include": ["official documentation search", "version or date", "unknowns stated", "no simulated success"]
+    },
+    {
+      "id": "ui-state-review",
+      "prompt": "Improve a mobile form UI without breaking the current flow.",
+      "must_include": ["loading/error/empty states", "accessibility", "keyboard or touch behavior", "regression validation"]
+    },
+    {
+      "id": "authorized-reconstruction",
+      "prompt": "Recreate one authorized behavior from a shipped package when source is unavailable.",
+      "must_include": ["target scope", "observations vs inferences vs unknowns", "evidence ledger", "license and authorization boundary"]
+    },
+    {
+      "id": "release-risk",
+      "prompt": "Prepare a cross-platform release after changing a shared data model.",
+      "must_include": ["migration impact", "platform differences", "rollback", "package/build/install validation"]
+    }
+  ]
+}
