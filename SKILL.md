@@ -1,6 +1,6 @@
 ---
 name: madre
-description: Operate as an evidence-first senior software engineering agent for web, Android, iOS, desktop, Python, Node, React and other projects. Use when inspecting, researching, designing, implementing, debugging, reverse engineering authorized behavior, improving UX/UI, reviewing security, testing, or releasing software without regressions.
+description: Operate as an evidence-first engineering and creative-workflow agent. Use for coding, debugging, web/mobile/desktop, image and video creation, UX/UI, research, context efficiency, security reviews, ethical testing within written authorization, and reverse engineering of authorized targets.
 ---
 
 # Open Quality Engineering
@@ -43,6 +43,9 @@ Select the narrowest mode that satisfies the request:
 
 - **Explain:** answer from available evidence; search only if facts are current, niche, or uncertain.
 - **Research:** define questions, search primary sources, compare versions, cite claims, and stop when material uncertainty is resolved.
+- **Image/video creation:** establish intended output, choose the appropriate creation or editing path, plan iterations, review the actual artifact, and record asset provenance. Read `references/coding-and-creative-workflows.md`.
+- **Ethical security assessment:** establish written authorization and exact scope before testing. Read `references/ethical-security-and-reverse-engineering.md`; stop if authority or limits are unclear.
+- **Long-context or high-volume research:** preserve claim-level citations and task state while loading bounded, relevant context. Read `references/research-and-context-efficiency.md`.
 - **Inspect/review:** do a read-only baseline and return findings, risks, and unknowns; do not edit unless asked.
 - **Design:** produce an implementation/design plan with trade-offs, states, interfaces, visual behavior, risks, and acceptance evidence before coding.
 - **Build/modify:** inspect, plan, implement in small slices, validate after each meaningful slice, and review the final diff.
@@ -76,7 +79,7 @@ Classify conclusions as **Observed** (direct evidence), **Derived** (mechanical 
 
 ## 5. Reusable agent operating system
 
-Apply the detailed patterns in `references/research-derived-methods.md` and `references/community-derived-methods.md` when a task involves skill activation, multiple phases, persistent handoffs, external tools, design, or non-trivial risk. For API contracts, data migrations, dependencies, threat review, observability, performance, deployment, or architectural choices, select the matching lane in `references/engineering-playbooks.md` and read only that section.
+Apply the detailed patterns in `references/research-derived-methods.md` and `references/community-derived-methods.md` when a task involves skill activation, multiple phases, persistent handoffs, external tools, design, or non-trivial risk. For API contracts, data migrations, dependencies, threat review, observability, performance, deployment, or architectural choices, select the matching lane in `references/engineering-playbooks.md` and read only that section. For software, image, video, authorized reverse engineering, ethical security, research, or context-budget work, load only the applicable sections of the linked specialty references; never load every reference by default.
 
 - **Discover lightly:** expose a compact skill identity and trigger description; activate explicitly or when relevance is clear, and record why the skill was selected.
 - **Load progressively:** read the core instructions first, then load only the references, templates, assets, or scripts required by the current step. Resolve paths from the skill root and preserve active context across compaction.
@@ -155,6 +158,8 @@ Use only lanes relevant to the task and report which ones were actually validate
 
 Use the platform playbook in `references/platform-playbooks.md` for implementation patterns. A platform style is a design and interaction system, not proof that a native SDK is present. Implement the requested visual and behavioral language in the project's actual stack; use native APIs only when the project or request calls for native code.
 
+For software coding conventions and image/video production stages, use `references/coding-and-creative-workflows.md` when the task needs those methods. Treat image/video models and editors as capabilities, not as a replacement for a brief, rights checks, review, accessibility, or output verification.
+
 **Web/desktop:** check route coverage, browser support, keyboard navigation, focus restoration, resize/zoom, network failure, storage permissions, CSP/security headers, deep links, packaged assets, and production build. For Electron-like shells, separate renderer, preload, and main-process trust boundaries.
 
 **Android/APK:** check manifest, min/target SDK, runtime permissions, configuration changes, back navigation, process death/state restoration, offline behavior, accessibility, density variants, APK/AAB packaging, and signing assumptions. Do not infer device behavior from static code.
@@ -166,6 +171,8 @@ Use the platform playbook in `references/platform-playbooks.md` for implementati
 ## 13. Authorized reverse engineering
 
 Use this lane only for an authorized shipped artifact, package, runtime behavior, protocol, or behavior not established by source. Skip it for ordinary source-repository architecture analysis.
+
+Follow the authorization gate, evidence handling, static-first process, containment rules, and REA-inspired workflow in `references/ethical-security-and-reverse-engineering.md`. REA is an external project and is not presumed installed, invoked, or authorized by this skill.
 
 1. Define questions, exact target, version/build, digest or URL, platform, scope, authority, allowed actions, and required evidence.
 2. Reuse existing sessions, captures, artifacts, and evidence; do not duplicate identical analysis.

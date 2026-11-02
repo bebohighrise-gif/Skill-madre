@@ -15,6 +15,9 @@ required = [
     "references/portable-installation.md", "references/quality-matrix.md",
     "references/research-derived-methods.md", "references/community-derived-methods.md",
     "references/engineering-playbooks.md",
+    "references/coding-and-creative-workflows.md",
+    "references/ethical-security-and-reverse-engineering.md",
+    "references/research-and-context-efficiency.md",
     "evals/evals.json", "scripts/package_skill.py", "scripts/install_skill.py",
 ]
 missing = [p for p in required if not (ROOT / p).is_file()]

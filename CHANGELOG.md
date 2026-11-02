@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.7.0 — Multimodal, security, research, and context workflows
+
+- Added progressive workflows for software skills, image/video production, responsible research/OSINT, and token/context efficiency.
+- Added authorization-first ethical security and reverse-engineering guidance, including an independently worded method-level summary of REA's documented evidence-led investigation loop.
+- Added source inventories, third-party license cautions, privacy boundaries, stop conditions, and evaluations for unsafe/ambiguous requests.
+- Expanded package contents and validation to include the new references.
+
 ## 0.6.0 — Cross-boundary engineering playbooks
 
 - Added task-routed guidance for API contracts, data migrations, dependency supply chains, security/privacy, observability, performance/reliability, deployment readiness, and architecture decisions.

@@ -20,6 +20,9 @@ INCLUDE = [
     "references/research-derived-methods.md",
     "references/community-derived-methods.md",
     "references/engineering-playbooks.md",
+    "references/coding-and-creative-workflows.md",
+    "references/ethical-security-and-reverse-engineering.md",
+    "references/research-and-context-efficiency.md",
     "installer/SKILL.md",
 ]
 

@@ -8,6 +8,8 @@ El núcleo está en [SKILL.md](SKILL.md). Incluye protocolo de arranque, rutas d
 
 Para cambios que cruzan fronteras técnicas, consulta los [playbooks de ingeniería](references/engineering-playbooks.md): contratos de API, migraciones de datos, dependencias y supply chain, seguridad y privacidad, observabilidad, rendimiento y confiabilidad, preparación de releases y decisiones de arquitectura. Se cargan por necesidad, no como una lista obligatoria para cada tarea.
 
+Madre incluye además guías progresivas para [código e imagen/vídeo](references/coding-and-creative-workflows.md), [hacking ético e ingeniería inversa autorizada (incluido un workflow inspirado en REA)](references/ethical-security-and-reverse-engineering.md) y [investigación/OSINT responsable y eficiencia de contexto](references/research-and-context-efficiency.md). Sintetiza principios públicos en instrucciones originales: no importa ni copia una colección completa de skills de terceros, no trata popularidad como prueba de calidad y no considera que la disponibilidad de una herramienta equivalga a autorización.
+
 El paquete funciona como una carpeta portable: contiene `SKILL.md` y recursos que el agente puede cargar progresivamente. No depende de un proveedor, modelo, SDK, navegador, emulador, GPU, MCP, credencial o ruta fija.
 
 ## Instalación genérica
@@ -58,7 +60,7 @@ python3 scripts/validate_project.py
 python3 scripts/package_skill.py --output /tmp/madre.skill
 ```
 
-Consulta también [references/platform-playbooks.md](references/platform-playbooks.md), [references/quality-matrix.md](references/quality-matrix.md), [references/portable-installation.md](references/portable-installation.md), [references/research-derived-methods.md](references/research-derived-methods.md), [references/community-derived-methods.md](references/community-derived-methods.md) y [evidence-ledger.md](evidence-ledger.md). Las referencias integran métodos públicos como activación progresiva, TDD, diseño UI basado en evidencia, planes ejecutables, subagentes acotados, revisión independiente, catálogos con procedencia, automatización declarativa y límites de seguridad; no copian código, prompts, texto propietario ni branding.
+Consulta también [references/platform-playbooks.md](references/platform-playbooks.md), [references/quality-matrix.md](references/quality-matrix.md), [references/portable-installation.md](references/portable-installation.md), [references/research-derived-methods.md](references/research-derived-methods.md), [references/community-derived-methods.md](references/community-derived-methods.md), las tres guías nuevas enlazadas arriba y [evidence-ledger.md](evidence-ledger.md). Las fuentes y licencias deben revisarse por artefacto; no se copian prompts, código, texto propietario ni branding.
 
 ## Licencia
 
