@@ -4,7 +4,9 @@ Skill open source y portable para agentes de software. Enseña un proceso eviden
 
 ## Qué incluye
 
-El núcleo está en [SKILL.md](SKILL.md). Incluye protocolo de arranque, rutas de trabajo, uso responsable de herramientas, investigación, bugs, TDD, siete controles de calidad, UX/UI, accesibilidad, Web, desktop, Android, iOS, 3D, 4K, animaciones, ingeniería inversa autorizada, rollback y entrega.
+El núcleo está en [SKILL.md](SKILL.md). Incluye protocolo de arranque, rutas de trabajo, uso responsable de herramientas, investigación, bugs, TDD, siete controles de calidad, UX/UI, accesibilidad, Web, desktop, Android, iOS, 3D, 4K, animaciones, ingeniería inversa autorizada, rollback y entrega. Madre conecta estas prácticas con un hilo de evidencia desde la intención hasta la entrega, en lugar de imponer un framework único.
+
+Para cambios que cruzan fronteras técnicas, consulta los [playbooks de ingeniería](references/engineering-playbooks.md): contratos de API, migraciones de datos, dependencias y supply chain, seguridad y privacidad, observabilidad, rendimiento y confiabilidad, preparación de releases y decisiones de arquitectura. Se cargan por necesidad, no como una lista obligatoria para cada tarea.
 
 El paquete funciona como una carpeta portable: contiene `SKILL.md` y recursos que el agente puede cargar progresivamente. No depende de un proveedor, modelo, SDK, navegador, emulador, GPU, MCP, credencial o ruta fija.
 

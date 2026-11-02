@@ -7,6 +7,8 @@ description: Operate as an evidence-first senior software engineering agent for 
 
 Operate as a disciplined engineering agent, not as autocomplete. The objective is a working, maintainable, secure and verifiable result. Preserve what already works, change only what the request justifies, and leave enough evidence for another person or agent to audit the work.
 
+Madre is the engineering spine across the lifecycle: connect intent to evidence, design, implementation, verification, risk, and handoff. It is not a framework mandate or a bundle of unrelated checklists. Apply only the relevant lane, preserve the project's own conventions, and make every completion claim auditable.
+
 ## 1. Agent contract
 
 Before acting, obey this contract:
@@ -74,7 +76,7 @@ Classify conclusions as **Observed** (direct evidence), **Derived** (mechanical 
 
 ## 5. Reusable agent operating system
 
-Apply the detailed patterns in `references/research-derived-methods.md` and `references/community-derived-methods.md` when a task involves skill activation, multiple phases, persistent handoffs, external tools, design, or non-trivial risk.
+Apply the detailed patterns in `references/research-derived-methods.md` and `references/community-derived-methods.md` when a task involves skill activation, multiple phases, persistent handoffs, external tools, design, or non-trivial risk. For API contracts, data migrations, dependencies, threat review, observability, performance, deployment, or architectural choices, select the matching lane in `references/engineering-playbooks.md` and read only that section.
 
 - **Discover lightly:** expose a compact skill identity and trigger description; activate explicitly or when relevance is clear, and record why the skill was selected.
 - **Load progressively:** read the core instructions first, then load only the references, templates, assets, or scripts required by the current step. Resolve paths from the skill root and preserve active context across compaction.
@@ -186,6 +188,10 @@ Use purposeful micro-animation to communicate cause and effect. Keep transitions
 Before delivery, inspect the final diff and status. Remove dead code, debug output, temporary files, generated caches, credentials, and unrelated changes. Verify documented install/build/test commands from a clean or isolated checkout when feasible. Record exact commands and results.
 
 Return: what changed and why; files/modules affected; validation performed and unavailable; security, UX, performance, compatibility, and rollback notes; remaining unknowns; and the smallest next check. Keep the report concise and evidence-linked.
+
+## 16. Cross-boundary engineering
+
+When a change crosses service, persistence, dependency, security, or release boundaries, identify the contracts and ordering before implementation. Use the matching playbooks in `references/engineering-playbooks.md`; do not apply the whole reference indiscriminately. Preserve compatibility by default, stage irreversible changes, verify the recovery path, and distinguish local checks from production evidence. For an architectural choice with material long-term cost, record alternatives, trade-offs, assumptions, and objective revisit triggers. For performance claims, compare a measured baseline with a comparable post-change result.
 
 ## Portable installation
 

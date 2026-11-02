@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.0 — Cross-boundary engineering playbooks
+
+- Added task-routed guidance for API contracts, data migrations, dependency supply chains, security/privacy, observability, performance/reliability, deployment readiness, and architecture decisions.
+- Strengthened Madre's identity as an evidence-linked engineering spine across intent, implementation, verification, risk, and handoff.
+- Added adversarial evaluation cases for compatibility, interrupted migrations, untrusted dependencies, privacy, benchmarking, and deployment authorization.
+- Extended package validation to require the new reference and check the expanded evaluation set.
+
 ## 0.5.0 — Community-derived methods
 
 - Added neutral methods from highly visible community repositories for UI/UX review, strict TDD, executable planning, root-cause debugging, bounded subagents, durable state, skill catalogs, declarative automation, and security boundaries.

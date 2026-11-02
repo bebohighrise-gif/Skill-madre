@@ -19,6 +19,7 @@ INCLUDE = [
     "references/quality-matrix.md",
     "references/research-derived-methods.md",
     "references/community-derived-methods.md",
+    "references/engineering-playbooks.md",
     "installer/SKILL.md",
 ]
 

@@ -14,6 +14,7 @@ required = [
     "references/platform-adapters.md", "references/platform-playbooks.md",
     "references/portable-installation.md", "references/quality-matrix.md",
     "references/research-derived-methods.md", "references/community-derived-methods.md",
+    "references/engineering-playbooks.md",
     "evals/evals.json", "scripts/package_skill.py", "scripts/install_skill.py",
 ]
 missing = [p for p in required if not (ROOT / p).is_file()]
@@ -32,6 +33,12 @@ for forbidden in (".env", ".npmrc", "id_rsa"):
         raise SystemExit(f"Forbidden sensitive file present: {forbidden}")
 
 evals = json.loads((ROOT / "evals/evals.json").read_text(encoding="utf-8"))
-if not evals.get("cases"):
+cases = evals.get("cases")
+if not isinstance(cases, list) or not cases:
     raise SystemExit("No evaluation cases found")
-print(f"OK: {len(required)} required package files and {len(evals['cases'])} evaluation cases")
+ids = [case.get("id") for case in cases if isinstance(case, dict)]
+if len(ids) != len(cases) or any(not case_id for case_id in ids) or len(set(ids)) != len(ids):
+    raise SystemExit("Evaluation cases must be objects with unique, non-empty IDs")
+if any(not isinstance(case.get("must_include"), list) or not case["must_include"] for case in cases):
+    raise SystemExit("Every evaluation case must define non-empty must_include criteria")
+print(f"OK: {len(required)} required package files and {len(cases)} evaluation cases")
