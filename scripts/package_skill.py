@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import subprocess
+import sys
 import zipfile
 from pathlib import Path
 
@@ -21,7 +22,7 @@ def main() -> None:
     output = args.output.expanduser().resolve()
     if output.parent == ROOT.resolve() or output.is_relative_to(ROOT.resolve()):
         raise SystemExit("Output archive must be outside the source directory")
-    subprocess.run(["python3", str(ROOT / "scripts" / "validate_project.py")], check=True)
+    subprocess.run([sys.executable, str(ROOT / "scripts" / "validate_project.py")], check=True)
     files = runtime_files()
     missing = [str(p.relative_to(ROOT)) for p in files if not p.is_file()]
     if missing:

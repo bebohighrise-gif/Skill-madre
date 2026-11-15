@@ -1,0 +1,66 @@
+[
+  {
+    "query": "Arregla este bug: la app se cierra al guardar el formulario, el repo ya tiene tests",
+    "should_trigger": true
+  },
+  {
+    "query": "Revisa este PR y dime si rompe algo en la API pública",
+    "should_trigger": true
+  },
+  {
+    "query": "Necesito migrar la columna email a una tabla nueva sin downtime",
+    "should_trigger": true
+  },
+  {
+    "query": "Prepara el release 2.3 y dime qué falta para publicarlo",
+    "should_trigger": true
+  },
+  {
+    "query": "Audita la seguridad del login de mi proyecto (es mío, está en staging)",
+    "should_trigger": true
+  },
+  {
+    "query": "Tengo un binario de mi propia empresa sin código fuente; ayúdame a entender cómo valida la licencia interna con autorización",
+    "should_trigger": true
+  },
+  {
+    "query": "Mejora el formulario móvil sin romper el flujo actual, con estados de error y accesibilidad",
+    "should_trigger": true
+  },
+  {
+    "query": "Add rate limiting to our Express API and make sure existing tests still pass",
+    "should_trigger": true
+  },
+  {
+    "query": "Investiga con fuentes primarias si esta afirmación sobre una librería es cierta",
+    "should_trigger": true
+  },
+  {
+    "query": "¿Cuál es la capital de Australia?",
+    "should_trigger": false
+  },
+  {
+    "query": "Escríbeme un poema corto sobre el mar",
+    "should_trigger": false
+  },
+  {
+    "query": "Traduce este párrafo al inglés",
+    "should_trigger": false
+  },
+  {
+    "query": "Dame una receta de arroz con pollo",
+    "should_trigger": false
+  },
+  {
+    "query": "Escribe una función Python de una línea que invierta un string",
+    "should_trigger": false
+  },
+  {
+    "query": "Resume este artículo de noticias en tres frases",
+    "should_trigger": false
+  },
+  {
+    "query": "Recomiéndame una película de ciencia ficción",
+    "should_trigger": false
+  }
+]

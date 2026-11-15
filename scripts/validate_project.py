@@ -26,6 +26,9 @@ def main() -> None:
         fail("SKILL.md frontmatter is invalid")
     if len(skill.splitlines()) >= 500:
         fail("SKILL.md must stay below 500 lines")
+    description = re.search(r"^description: (.+)$", skill, re.MULTILINE).group(1)
+    if len(description) > 1024:
+        fail(f"description is {len(description)} characters; the Agent Skills limit is 1024")
 
     package_files = [skill_path, ROOT / "evidence-ledger.md"] + sorted((ROOT / "references").rglob("*.md"))
     missing = [str(p.relative_to(ROOT)) for p in package_files if not p.is_file()]
@@ -52,14 +55,25 @@ def main() -> None:
         cases = evals.get("cases")
         if not isinstance(cases, list) or not cases:
             fail("No evaluation cases found")
-    ids = [case.get("id") for case in cases if isinstance(case, dict)]
-    if len(ids) != len(cases) or any(not value for value in ids) or len(set(ids)) != len(ids):
-        fail("Evaluation cases must have unique, non-empty IDs")
-    for case in cases:
-        if not isinstance(case.get("prompt"), str) or not case["prompt"].strip():
-            fail(f"Evaluation case {case.get('id')} has no prompt")
-        if not isinstance(case.get("must_include"), list) or not case["must_include"]:
-            fail(f"Evaluation case {case.get('id')} has no must_include criteria")
+        ids = [case.get("id") for case in cases if isinstance(case, dict)]
+        if len(ids) != len(cases) or any(not value for value in ids) or len(set(ids)) != len(ids):
+            fail("Evaluation cases must have unique, non-empty IDs")
+        for case in cases:
+            if not isinstance(case.get("prompt"), str) or not case["prompt"].strip():
+                fail(f"Evaluation case {case.get('id')} has no prompt")
+            if not isinstance(case.get("must_include"), list) or not case["must_include"]:
+                fail(f"Evaluation case {case.get('id')} has no must_include criteria")
+
+    trigger_path = ROOT / "evals" / "trigger-evals.json"
+    if trigger_path.is_file():
+        queries = json.loads(trigger_path.read_text(encoding="utf-8"))
+        if not isinstance(queries, list) or not queries:
+            fail("trigger-evals.json must be a non-empty list")
+        for item in queries:
+            if not isinstance(item.get("query"), str) or not isinstance(item.get("should_trigger"), bool):
+                fail("Each trigger eval needs a string query and a boolean should_trigger")
+        if not any(q["should_trigger"] for q in queries) or all(q["should_trigger"] for q in queries):
+            fail("trigger-evals.json needs both should_trigger and should-not-trigger queries")
 
     print(f"OK: {len(package_files)} runtime files and valid local references")
 

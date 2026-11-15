@@ -2,9 +2,9 @@
 
 Copy this template into a task when a change needs an auditable trail.
 
-| Question | Evidence | Conclusion | Confidence | Remaining unknown |
-|---|---|---|---|---|
-|  |  |  |  |  |
+| Question | Evidence | Conclusion | Confidence | Remaining unknown | Next check |
+|---|---|---|---|---|---|
+|  |  |  |  |  |  |
 
 ## Seven-control record
 
