@@ -91,6 +91,16 @@ def destination_for(args: argparse.Namespace) -> Path:
     return base / ".agent" / "skills" / NAME if args.scope == "project" else base / NAME
 
 
+def backup_path(destination: Path) -> Path:
+    stamp = int(time.time())
+    candidate = destination.with_name(destination.name + f".backup.{stamp}")
+    counter = 1
+    while candidate.exists():
+        candidate = destination.with_name(destination.name + f".backup.{stamp}.{counter}")
+        counter += 1
+    return candidate
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--scope", choices=["user", "project", "custom"], default="user")
@@ -100,6 +110,10 @@ def main() -> None:
 
     expected = validate_graph()
     destination = destination_for(args)
+    if destination == ROOT or destination.is_relative_to(ROOT):
+        fail(f"Refusing destination inside the skill source: {destination}")
+    if destination.is_symlink():
+        fail(f"Refusing symlink destination: {destination}")
     if destination.exists() and not destination.is_dir():
         fail(f"Destination is not a directory: {destination}")
     destination.parent.mkdir(parents=True, exist_ok=True)
@@ -115,7 +129,7 @@ def main() -> None:
         if destination.exists() and not args.force:
             fail(f"Destination exists; use --force to back it up: {destination}")
         if destination.exists():
-            backup = destination.with_name(destination.name + f".backup.{int(time.time())}")
+            backup = backup_path(destination)
             destination.rename(backup)
         staging.rename(destination)
         staging = None

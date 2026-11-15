@@ -9,7 +9,10 @@ Run these checks before proposing a change:
 ```bash
 python3 scripts/validate_project.py
 python3 scripts/package_skill.py --output /tmp/madre.skill
+python3 -m unittest discover -s tests -v
 bash -n install.sh
 ```
 
 Keep claims evidence-based. Do not add provider-specific behavior, credentials, fixed paths, or external instructions unless the source and scope are explicit. If a new reference is added, link it from the route that needs it and ensure the validator sees it in the archive.
+
+Before a release, repeat the validator and installer tests from a fresh checkout of `main`. The runtime package must contain only the skill graph; test files and repository scripts stay outside the installed skill.
