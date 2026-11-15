@@ -7,6 +7,9 @@
 - Staged installations before replacement, rejected unsafe symlinks, compared SHA-256 manifests, and restored timestamped backups when final verification fails.
 - Removed obsolete provider- or workflow-specific references from the runtime package and replaced them with focused API, migration, supply-chain, reliability, and release playbooks.
 - Expanded evaluations for authorization, staged-copy integrity, and technical playbook routing.
+- Added explicit no-activation behavior for unrelated requests and skill-root path resolution.
+- Added external-skill intake rules for provenance, revision, license, permissions, untrusted files, and activation authorization.
+- Added privacy and multi-tenant guidance for minimization, redaction, retention, access, deletion, and server-side isolation.
 
 ## 0.7.0 — Multimodal, security, research, and context workflows
 

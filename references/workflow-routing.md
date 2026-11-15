@@ -2,6 +2,8 @@
 
 Choose the narrowest route that satisfies the request; do not run every checklist.
 
+If the request is unrelated to the skill's domain, do not force activation. Answer briefly and do not inspect a repository. If the request concerns another skill or connector, route to `references/external-skills.md` before any installation or activation decision.
+
 - **Explain:** answer from inspected evidence; research only current, niche, or uncertain claims.
 - **Inspect/review:** read-only baseline and findings. Do not edit unless asked.
 - **Research:** define questions, prefer primary sources, compare dates/versions, cite claims, and stop when material uncertainty is resolved.
