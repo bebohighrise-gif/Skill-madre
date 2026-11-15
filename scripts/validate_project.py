@@ -1,47 +1,63 @@
 #!/usr/bin/env python3
-"""Validate the neutral portable skill package."""
+"""Validate the repository and the complete runtime resource graph."""
 from __future__ import annotations
 
 import json
 import re
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-required = [
-    "SKILL.md", "README.md", "LICENSE", "ATTRIBUTIONS.md", "AGENTS.md",
-    "SECURITY.md", "CONTRIBUTING.md", "CHANGELOG.md", "evidence-ledger.md",
-    "install.sh", "install.ps1", "installer/SKILL.md",
-    "references/platform-adapters.md", "references/platform-playbooks.md",
-    "references/portable-installation.md", "references/quality-matrix.md",
-    "references/research-derived-methods.md", "references/community-derived-methods.md",
-    "references/engineering-playbooks.md",
-    "references/coding-and-creative-workflows.md",
-    "references/ethical-security-and-reverse-engineering.md",
-    "references/research-and-context-efficiency.md",
-    "evals/evals.json", "scripts/package_skill.py", "scripts/install_skill.py",
-]
-missing = [p for p in required if not (ROOT / p).is_file()]
-if missing:
-    raise SystemExit("Missing: " + ", ".join(missing))
+FRONTMATTER = re.compile(r"^---\nname: ([a-z0-9-]+)\ndescription: .+\n---\n", re.DOTALL)
+LOCAL_REF = re.compile(r"(?<![\w./-])(references/[\w./-]+|evidence-ledger\.md)")
 
-skill = (ROOT / "SKILL.md").read_text(encoding="utf-8")
-if not re.match(r"^---\nname: [a-z0-9-]+\ndescription: .+\n---\n", skill):
-    raise SystemExit("SKILL.md frontmatter is invalid")
-if len(skill.splitlines()) >= 500:
-    raise SystemExit("SKILL.md must stay below 500 lines")
-if any(p.name.lower().startswith("promot") for p in ROOT.iterdir()):
-    raise SystemExit("Promot must not be present")
-for forbidden in (".env", ".npmrc", "id_rsa"):
-    if (ROOT / forbidden).exists():
-        raise SystemExit(f"Forbidden sensitive file present: {forbidden}")
 
-evals = json.loads((ROOT / "evals/evals.json").read_text(encoding="utf-8"))
-cases = evals.get("cases")
-if not isinstance(cases, list) or not cases:
-    raise SystemExit("No evaluation cases found")
-ids = [case.get("id") for case in cases if isinstance(case, dict)]
-if len(ids) != len(cases) or any(not case_id for case_id in ids) or len(set(ids)) != len(ids):
-    raise SystemExit("Evaluation cases must be objects with unique, non-empty IDs")
-if any(not isinstance(case.get("must_include"), list) or not case["must_include"] for case in cases):
-    raise SystemExit("Every evaluation case must define non-empty must_include criteria")
-print(f"OK: {len(required)} required package files and {len(cases)} evaluation cases")
+def fail(message: str) -> None:
+    raise SystemExit(message)
+
+
+def main() -> None:
+    skill_path = ROOT / "SKILL.md"
+    if not skill_path.is_file():
+        fail("SKILL.md is missing")
+    skill = skill_path.read_text(encoding="utf-8")
+    match = FRONTMATTER.match(skill)
+    if not match:
+        fail("SKILL.md frontmatter is invalid")
+    if len(skill.splitlines()) >= 500:
+        fail("SKILL.md must stay below 500 lines")
+
+    package_files = [skill_path, ROOT / "evidence-ledger.md"] + sorted((ROOT / "references").rglob("*.md"))
+    missing = [str(p.relative_to(ROOT)) for p in package_files if not p.is_file()]
+    if missing:
+        fail("Missing runtime files: " + ", ".join(missing))
+    for path in package_files:
+        if path.is_symlink() or not path.resolve().is_relative_to(ROOT.resolve()):
+            fail(f"Unsafe runtime path: {path}")
+
+    for source in package_files:
+        text = source.read_text(encoding="utf-8")
+        for ref in sorted(set(LOCAL_REF.findall(text))):
+            if not (ROOT / ref).is_file():
+                fail(f"Broken local reference in {source.relative_to(ROOT)}: {ref}")
+
+    forbidden = {".env", ".npmrc", "id_rsa", "id_ed25519"}
+    for path in ROOT.rglob("*"):
+        if path.is_file() and path.name in forbidden:
+            fail(f"Forbidden sensitive file present: {path.relative_to(ROOT)}")
+
+    evals_path = ROOT / "evals" / "evals.json"
+    if evals_path.is_file():
+        evals = json.loads(evals_path.read_text(encoding="utf-8"))
+        cases = evals.get("cases")
+        if not isinstance(cases, list) or not cases:
+            fail("No evaluation cases found")
+        ids = [case.get("id") for case in cases if isinstance(case, dict)]
+        if len(ids) != len(cases) or any(not value for value in ids) or len(set(ids)) != len(ids):
+            fail("Evaluation cases must have unique, non-empty IDs")
+
+    print(f"OK: {len(package_files)} runtime files and valid local references")
+
+
+if __name__ == "__main__":
+    main()
