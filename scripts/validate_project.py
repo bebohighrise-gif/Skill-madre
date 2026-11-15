@@ -52,9 +52,14 @@ def main() -> None:
         cases = evals.get("cases")
         if not isinstance(cases, list) or not cases:
             fail("No evaluation cases found")
-        ids = [case.get("id") for case in cases if isinstance(case, dict)]
-        if len(ids) != len(cases) or any(not value for value in ids) or len(set(ids)) != len(ids):
-            fail("Evaluation cases must have unique, non-empty IDs")
+    ids = [case.get("id") for case in cases if isinstance(case, dict)]
+    if len(ids) != len(cases) or any(not value for value in ids) or len(set(ids)) != len(ids):
+        fail("Evaluation cases must have unique, non-empty IDs")
+    for case in cases:
+        if not isinstance(case.get("prompt"), str) or not case["prompt"].strip():
+            fail(f"Evaluation case {case.get('id')} has no prompt")
+        if not isinstance(case.get("must_include"), list) or not case["must_include"]:
+            fail(f"Evaluation case {case.get('id')} has no must_include criteria")
 
     print(f"OK: {len(package_files)} runtime files and valid local references")
 

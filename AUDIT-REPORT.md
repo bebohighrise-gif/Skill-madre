@@ -29,3 +29,9 @@ Se probó instalación en un destino temporal. La primera instalación terminó 
 ## Límites restantes
 
 Esto valida la estructura, los scripts y los controles estáticos del paquete. No demuestra que un host externo descubra o active automáticamente la skill, ni demuestra compilación, ejecución o comportamiento de runtime de proyectos a los que la skill pueda aplicarse. Esas comprobaciones dependen del host y del proyecto objetivo.
+
+## Fase de endurecimiento de la versión final
+
+El instalador ya no ejecuta `scripts/validate_project.py` ni depende de otro script del paquete para decidir si instala. Hace sus comprobaciones mínimas internamente, calcula un manifiesto SHA-256 del grafo runtime, valida la copia staged antes de reemplazar y verifica de nuevo la copia final. Si la verificación final falla después de un `--force`, elimina la copia defectuosa y restaura el backup.
+
+También se recuperó profundidad técnica como cinco módulos enfocados: contratos API, migraciones de datos, dependencias/supply chain, observabilidad/rendimiento/confiabilidad y arquitectura/release. Se eliminó la evaluación obsoleta de Rust Devblog, se subió el esquema de evaluaciones a la versión 6 y se añadieron casos de autorización, integridad de instalación y selección de playbooks.

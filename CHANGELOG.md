@@ -4,8 +4,9 @@
 
 - Replaced the oversized workflow file and overlapping references with focused modules for routing, safety, software, security, research, platforms, quality, and installation.
 - Added runtime reference-graph validation and made packaging derive from the resources the skill can actually load.
-- Staged installations before replacement, rejected unsafe symlinks, and preserved timestamped backups for forced replacement.
-- Removed obsolete provider- or workflow-specific references from the runtime package.
+- Staged installations before replacement, rejected unsafe symlinks, compared SHA-256 manifests, and restored timestamped backups when final verification fails.
+- Removed obsolete provider- or workflow-specific references from the runtime package and replaced them with focused API, migration, supply-chain, reliability, and release playbooks.
+- Expanded evaluations for authorization, staged-copy integrity, and technical playbook routing.
 
 ## 0.7.0 — Multimodal, security, research, and context workflows
 
