@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased — Modular core and safer packaging
+## 0.9.0-rc.1 — Modular core, safer packaging, and installer tests
 
 - Replaced the oversized workflow file and overlapping references with focused modules for routing, safety, software, security, research, platforms, quality, and installation.
 - Added runtime reference-graph validation and made packaging derive from the resources the skill can actually load.
