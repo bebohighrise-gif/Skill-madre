@@ -152,6 +152,38 @@ Apply all seven controls and record their evidence:
 
 An unavailable control is **unavailable**, not passed. Do not claim zero regressions without evidence.
 
+### Security review questions
+
+Use these questions as a focused checklist when the security/privacy control applies. Answer each with evidence, mark it **unknown** when it was not verified, and test only systems and environments within written authorization:
+
+1. ¿El inicio de sesión verifica realmente la identidad y no depende solo de una interfaz o ruta ocultable?
+2. ¿Las contraseñas se almacenan con un hash adaptativo y seguro, nunca en texto plano ni con hashes débiles?
+3. ¿Las cookies de sesión son seguras, HttpOnly, con SameSite apropiado y con una expiración controlada?
+4. ¿Los enlaces para cambiar la contraseña expiran, son de un solo uso y no revelan información sensible?
+5. ¿Las claves de API están fuera del código, del cliente, de los logs, de los artefactos y del historial del repositorio?
+6. ¿Los secretos y configuraciones sensibles se cargan mediante variables de entorno o un gestor de secretos adecuado?
+7. ¿Se escaneó el historial de Git y se revocaron o reemplazaron las claves que alguna vez quedaron expuestas?
+8. ¿Las claves filtradas fueron revocadas, rotadas y retiradas de copias, cachés y artefactos accesibles?
+9. ¿La base de datos aplica permisos mínimos por servicio, usuario, tabla, fila y operación?
+10. ¿Las consultas están parametrizadas y protegidas contra inyección, incluidos filtros, ordenamientos y búsquedas?
+11. ¿Las rutas de administración están cerradas con autenticación, autorización y controles del lado del servidor?
+12. ¿La actividad anómala se registra con suficiente contexto y genera alertas sin exponer datos sensibles?
+13. ¿Los formularios se validan en el servidor además de cualquier validación del cliente?
+14. ¿La salida se escapa o sanitiza correctamente para evitar XSS en HTML, atributos, URLs, plantillas y contenido enriquecido?
+15. ¿Las acciones que cambian datos están protegidas contra CSRF y requieren una intención autenticada válida?
+16. ¿Los archivos subidos tienen tipo, tamaño, nombre, contenido y almacenamiento limitados y validados?
+17. ¿Los precios, descuentos, impuestos y pagos se calculan y verifican en el servidor antes de confirmar una operación?
+18. ¿Todo el tráfico sensible usa HTTPS y se rechazan configuraciones o redirecciones inseguras?
+19. ¿El inicio de sesión, recuperación de cuenta y endpoints sensibles limitan intentos, velocidad y abusos automatizados?
+20. ¿CORS está restringido a orígenes necesarios y no permite credenciales desde orígenes arbitrarios?
+21. ¿Las cabeceras de seguridad y la política de contenido reducen framing, MIME sniffing, XSS y conexiones no autorizadas?
+22. ¿El modo de depuración está desactivado en producción y no se muestran trazas, secretos ni detalles internos?
+23. ¿Las dependencias están actualizadas, fijadas o verificadas y se revisan vulnerabilidades y riesgo de supply chain?
+24. ¿Se eliminaron paquetes, permisos, endpoints y código que no se usan y que amplían innecesariamente la superficie de ataque?
+25. ¿Los archivos, rutas, backups, mapas de código, variables y endpoints internos expuestos están bloqueados o protegidos?
+26. ¿Se hizo una revisión completa de sesión, claves, datos, archivos, dependencias, pagos, permisos, logs y configuración?
+27. ¿Se probaron las protecciones dentro del alcance autorizado y se pidió un informe con hallazgos, correcciones y pendientes?
+
 ## 12. Platform and visual lanes
 
 Use only lanes relevant to the task and report which ones were actually validated.
